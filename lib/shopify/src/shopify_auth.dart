@@ -45,8 +45,9 @@ class ShopifyAuth with ShopifyError {
     print(result.exception.toString());
     checkForError(result,
         key: 'customerCreate', errorKey: 'customerUserErrors');
-    if ((result?.data['customerCreate'] ?? const {})['customerUserErrors'] !=
-        null)
+    List errors =
+        (result?.data['customerCreate'] ?? const {})['customerUserErrors'];
+    if (errors != null && errors.length > 0)
       throw (result?.data['customerCreate'] ??
           const {}['customerUserErrors'].first['message']);
     final shopifyUser = ShopifyUser.fromJson(
