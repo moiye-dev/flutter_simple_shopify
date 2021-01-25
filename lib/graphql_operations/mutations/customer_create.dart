@@ -97,6 +97,11 @@ mutation MyMutation($email: String!, $password: String!, $firstName: String!, $l
         }
       }
   }
+  customerUserErrors {
+       code
+       field
+       message
+    }
   }
 }
 ''';
