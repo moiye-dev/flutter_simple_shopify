@@ -30,7 +30,8 @@ class ShopifyUser {
   static ShopifyUser fromJson(Map<String, dynamic> json) {
     return ShopifyUser(
       address: Addresses.fromJson(json['addresses'] ?? const {}),
-      defaultAddress: Address.fromJson(json['defaultAddress'] ?? const {}),
+      defaultAddress:
+          Address.fromJson({'node': json['defaultAddress']} ?? const {}),
       createdAt: json['createdAt'],
       displayName: json['displayName'],
       email: json['email'],
