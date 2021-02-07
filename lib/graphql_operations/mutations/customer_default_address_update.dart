@@ -1,6 +1,6 @@
 const String customerDefaultAddressUpdateMutation = r'''
-mutation customerDefaultAddressUpdate( $customerAccessToken: String!, $id: ID!) {
-  customerDefaultAddressUpdate(customerAccessToken: $customerAccessToken, id: $id ) {
+mutation customerDefaultAddressUpdate($customerAccessToken: String!, $addressId: ID!) {
+  customerDefaultAddressUpdate(customerAccessToken: $customerAccessToken, addressId: $addressId ) {
     customer {
       id
     }

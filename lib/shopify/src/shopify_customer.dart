@@ -148,8 +148,8 @@ class ShopifyCustomer with ShopifyError {
     final MutationOptions _options = MutationOptions(
         documentNode: gql(customerDefaultAddressUpdateMutation),
         variables: {
-          'id': addressId,
           'customerAccessToken': customerAccessToken,
+          'addressId': addressId,
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
