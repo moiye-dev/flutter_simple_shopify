@@ -1,8 +1,9 @@
 const String createCheckoutMutation = r'''
-mutation MyMutation {
-  checkoutCreate(input: {}) {
+mutation MyMutation($note: String!) {
+  checkoutCreate(input: {note: $note}) {
     checkout {
       id
+      note
     }
   }
 }

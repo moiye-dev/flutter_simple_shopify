@@ -210,11 +210,13 @@ class ShopifyCheckout with ShopifyError{
   }
 
   /// Returns the Checkout Id.
-  ///
+  /// MOIYE adaptation
   /// Creates a new [Checkout].
-  Future<String> createCheckout({bool deleteThisPartOfCache = false}) async {
+  Future<String> createCheckout({ String note = "", bool deleteThisPartOfCache = false}) async {
     final MutationOptions _options = MutationOptions(
-      documentNode: gql(createCheckoutMutation),
+      documentNode: gql(createCheckoutMutation), variables: {
+         'note': note,
+      }
     );
     final QueryResult result = await _graphQLClient.mutate(_options);
     checkForError(result);
