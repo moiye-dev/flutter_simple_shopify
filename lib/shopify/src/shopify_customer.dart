@@ -48,7 +48,8 @@ class ShopifyCustomer with ShopifyError {
           'id': id
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(result,
+        key: 'customerAddressUpdate', errorKey: 'customerUserErrors');
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -79,7 +80,8 @@ class ShopifyCustomer with ShopifyError {
         documentNode: gql(createValidMutationString(variableMap)),
         variables: variableMap);
     QueryResult result = await _graphQLClient.mutate(_options);
-    // checkForError(result);
+    checkForError(result,
+        key: 'customerUpdate', errorKey: 'customerUserErrors');
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -115,7 +117,8 @@ class ShopifyCustomer with ShopifyError {
           'customerAccessToken': customerAccessToken,
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(result,
+        key: 'customerAddressCreate', errorKey: 'customerUserErrors');
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -135,7 +138,8 @@ class ShopifyCustomer with ShopifyError {
           'id': addressId
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(result,
+        key: 'customerAddressDelete', errorKey: 'customerUserErrors');
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }
@@ -152,7 +156,8 @@ class ShopifyCustomer with ShopifyError {
           'addressId': addressId,
         });
     final QueryResult result = await _graphQLClient.mutate(_options);
-    checkForError(result);
+    checkForError(result,
+        key: 'customerDefaultAddressUpdate', errorKey: 'customerUserErrors');
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_options.toKey(), null);
     }

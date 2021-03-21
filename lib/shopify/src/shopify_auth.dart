@@ -142,6 +142,7 @@ class ShopifyAuth with ShopifyError {
         variables: {'customerAccessToken': _prefs.getString(_shopifyKey)});
     if (deleteThisPartOfCache) {
       _graphQLClient.cache.write(_getCustomer.toKey(), null);
+      _shopifyUser = null;
     }
     if (_shopifyUser != null) {
       return _shopifyUser;

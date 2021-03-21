@@ -45,7 +45,7 @@ class _HomeTabState extends State<HomeTab> {
     try {
       ShopifyStore shopifyStore = ShopifyStore.instance;
       final List<Product> bestSellingProducts = await shopifyStore
-          .getNProducts(false, n: 6, sortKey: SortKeyProduct.BEST_SELLING);
+          .getNProducts(6, sortKey: SortKeyProduct.BEST_SELLING);
       if (mounted) {
         setState(() {
           products = bestSellingProducts;
@@ -75,14 +75,22 @@ class _HomeTabState extends State<HomeTab> {
         child: Container(
           width: MediaQuery.of(context).size.width,
           alignment: Alignment.bottomCenter,
-          child: Text(product.title,style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
+          child: Text(
+            product.title,
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );
   }
 
   void _navigateToProductDetailScreen(Product product) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => ProductDetailScreen(product: product,)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ProductDetailScreen(
+                  product: product,
+                )));
   }
 }
